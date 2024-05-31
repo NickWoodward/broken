@@ -1,0 +1,72 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { Toaster } from "sonner";
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
+import { Portal } from "../components/Portal";
+import { Logo } from "../components/Logo";
+import { Navigation } from "../components/Navigation";
+import { cn } from "../utils/utils";
+import { PrivacyPolicy } from "../components/PrivacyPolicy";
+import { $isPrivacyMenuOpen } from '../stores/store';
+import { MobileMenu } from "../components/MobileMenu";
+
+const { classes, title, dark, transparent, page, ...rest } = Astro.props;
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vehicle Sourcing, Purchasing, Financing and Coverage">
+  <meta title={title}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+
+  <title>Sub1</title>
+  <!-- <script is:inline>window.faitracker=window.faitracker||function(){this.q=[];var t=new CustomEvent("FAITRACKER_QUEUED_EVENT");return this.init=function(t,e,a){this.TOKEN=t,this.INIT_PARAMS=e,this.INIT_CALLBACK=a,window.dispatchEvent(new CustomEvent("FAITRACKER_INIT_EVENT"))},this.call=function(){var e={k:"",a:[]};if(arguments&&arguments.length>=1){for(var a=1;a<arguments.length;a++)e.a.push(arguments[a]);e.k=arguments[0]}this.q.push(e),window.dispatchEvent(t)},this.message=function(){window.addEventListener("message",function(t){"faitracker"===t.data.origin&&this.call("message",t.data.type,t.data.message)})},this.message(),this.init("wedhefhie55zdejqhrtii70u7i1yx7vp",{host:"https://api.factors.ai"}),this}(),function(){var t=document.createElement("script");t.type="text/javascript",t.src="https://app.factors.ai/assets/factors.js",t.async=!0,(d=document.getElementsByTagName("script")[0]).parentNode.insertBefore(t,d)}();</script>  -->
+</head>
+<body class="relative h-screen">
+  <main class={classes} {...rest} >
+    <ViewTransitions />
+    <Header dark={dark} page={page} className="flex w-full justify-between px-6" client:load>
+      <div class={cn("header-bg  fixed flex items-center justify-center inset-0 h-header cursor-pointer ", {
+        // "bg-slate-100 shadow": !dark,
+        "bg-secondary shadow-xl opacity-0 lg:opacity-100": page === "home",
+        "bg-white shadow-md": page === "datacentres"
+      })}>
+      </div>
+      <div class="flex w-full justify-between max-w-[1600px] mx-auto">
+        <Logo dark={!dark} className={cn("flex items-center h-header z-50", {"lg:text-white": page === "home"})} />
+        <Navigation dark={dark} className="nav flex items-center h-header z-50" client:visible/>
+        <MobileMenu items={[
+          {name: "About", to: "/#about"},
+          {name: "Why Us", to: "/#why"},
+          {name: "Contact", to: "/#contact"},
+          {name: "Data Centres", to: "/datacentres"},
+      
+        ]} itemClassName="cursor-pointer" client:load />
+
+      </div>
+    </Header />
+    <Toaster 
+      toastOptions={{
+        // unstyled: true,
+        classNames: {
+          toast: 'bg-blue-400',
+          title: 'text-red-400',
+          description: 'text-red-400',
+          actionButton: 'bg-zinc-400',
+          cancelButton: 'bg-orange-400',
+          closeButton: 'bg-lime-400',
+        },
+      }}
+      richColors className="" client:only
+    />
+    <PrivacyPolicy client:load />
+    <slot />
+    <Footer className="" client:visible/>
+  </main>
+</body>
+</html>

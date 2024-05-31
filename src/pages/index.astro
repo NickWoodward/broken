@@ -1,0 +1,181 @@
+---
+import "../styles/global.css";
+import { Image } from 'astro:assets';
+import MainLayout from "../layouts/main-layout.astro";
+import { Section } from "../components/Section";
+import { Hero } from "../components/Hero";
+import { About } from "../components/About";
+import { FAQs } from "../components/FAQs";
+import { SectionIntro } from "../components/SectionIntro";
+import { SectionSubtitle } from "../components/SectionSubtitle";
+import { SectionTitle } from "../components/SectionTitle";
+import { SectionDescription } from "../components/SectionDescription";
+
+// Assets
+
+import { ContactForm } from "../components/ContactForm";
+import { Background } from "../components/Background";
+
+console.log("Running on the server")
+
+const aboutTitle = "Single-Tenant Data Centres";
+const aboutSubtitle = "Cost Efficient, Resilient & Secure";
+const aboutDescription = ["New or fully refurbished hyper-efficient data centres, with low cooling requirements, onsite power generation and direct utility procurement."];
+
+const whyTitle = "Why SUB1?";
+const whyDescription1 = "SUB1 designs state-of-the-art data centres tailored for single tenant occupancy. Tenants pay for power directly with utility providers, cutting the total cost of ownership (TCO) in half compared to traditional colocation services.";
+const whyDescription2 = "Our site selection strategy focuses on optimal power availability and carrier density, accommodating a broad range of client requirements.";
+const whyDescription = [whyDescription1, whyDescription2];
+
+const FAQTitle = "Frequently Asked Questions";
+const contactTitle = "Get In Touch";
+const contactDescription = ["If you are interested in leasing or buying one of SUB1’s data centres, please submit your information and we will contact you"];
+---
+
+<script>
+	import { useGSAP } from "@gsap/react";
+	import { gsap } from "gsap";
+	import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(useGSAP);
+
+  // const aboutButtonTl = gsap.timeline({ paused: true });
+
+  // aboutButtonTl.to('.about-button', {
+  //   autoAlpha: 1,
+  //   // yPercent: 100,
+  //   ease:'power4.inOut"',
+  //   duration: 1.7
+  // });
+
+  // ScrollTrigger.create({
+  //   trigger: '.about-button',
+  //   start: "top 50%",
+  //   // markers:true,
+  //   onEnter: () => aboutButtonTl.play(),
+  //   // onLeaveBack: () => tl.pause(0)
+
+  // });
+
+	// // header color animation
+	// const navColors = ["var(--secondary)",    "var(--primary-dark)", "var(--primary)", "#EE82EE", "#FF6347"];
+
+	// const sections = gsap.utils.toArray<HTMLElement>(".section");
+	// 	console.log(sections)
+	// sections.forEach((section, index) => {
+	// 	ScrollTrigger.create({
+	// 		trigger: section,
+	// 		start: "top var(--header-height)",
+	// 		end: "bottom 100px",
+	// 		animation: gsap.to(".header", {backgroundColor: navColors[index], immediateRender:false}),
+	// 		toggleActions:"restart none none reverse",
+	// 		preventOverlaps:true
+	// 	});
+	// });
+</script>
+
+<!-- Overflow-hidden fixes 1st section pushing fixed header down -->
+<MainLayout page="home" transparent={true} dark={true} classes="overflow-hidden bg-slate-600">
+	<Section id="hero" height="full" className="section-1 2xl:mx-auto max-w-[2000px] bg-slate-50   grid grid-cols-[7%_1rem_1fr_1rem_7%] xs:grid-cols-[10%_1fr_10%]  lg:grid-cols-[10%_3fr_2fr] xl:grid-cols-[12%_1fr_1fr]">	
+		
+		<div class="image-border hidden lg:flex -translate-x-3 bg-slate-200 row-start-1 col-start-1 lg:col-start-3 col-span-full h-full lg:poly-clip"></div>
+		<div class="hero-bg bg-gray-600 row-start-1 col-start-1   lg:col-start-3 col-span-full h-full lg:poly-clip"></div>
+		<!-- <Image 
+			data-flip="false" 
+			class="hero-image opacity-0 invisible row-start-1 col-start-1 lg:col-start-3 col-span-full h-full object-cover mix-blend-soft-light brightness-[55%] z-40 lg:poly-clip" 
+			src={servers} 
+			loading="eager"
+			widths={[ ]} 
+			alt="A closeup of our servers" slot="bgImage"
+		/>	 -->
+		 <!-- <Image 
+			data-flip="false" 
+			class="IMAGE row-start-1 col-start-1 lg:col-start-3 col-span-full h-full object-cover mix-blend-soft-light  brightness-[60%] saturate-50 z-40 lg:poly-clip" 
+			src={solar} 
+			widths={[ ]} 
+			alt="A closeup of our servers" slot="bgImage"
+		/>	 -->
+
+		<!-- <Carousel class="flex"> -->
+			<!-- <Image 
+				data-flip="false" 
+				class="hero-image opacity-0 invisible  row-start-1 col-start-1 lg:col-start-3 col-span-full h-full object-cover mix-blend-soft-light brightness-[55%]  z-40 lg:poly-clip" 
+				src={datacenter} 
+				widths={[ ]} 
+				alt="A closeup of our servers" slot="bgImage"
+			/>	 -->
+		<!-- </Carousel> -->
+		<Hero className="xxxs-v:pb-12 items-center xxs-v:pt-[calc(var(--header-height)+3%)] xs-v:pt-[calc(var(--header-height)+6%)] content-center xs-v:content-start row-start-1 col-start-2 col-span-3 xs:col-start-2 sm:col-start-2 xs:col-span-1  max-w-lg md:max-w-2xl z-40" client:only />
+	</Section>
+
+	<!-- <Section id="about" className="2xl:mx-auto max-w-[2000px] scroll-mt-6 sm:scroll-mt-12 bg-slate-200 grid grid-cols-[1.5rem_1rem_1fr_1rem_1.5rem] xs:grid-cols-[5%_5%_1fr_5%_5%]  xl:grid-cols-[6%_6%_1fr_2fr_6%_6%]  items-center py-section-sm md:py-section-md xl:py-section-lg gap-y-20 md:gap-y-24"  >
+
+		<SectionIntro className="max-w-lg col-start-2 col-span-3 xs:col-start-3 xs:col-span-1 xl:col-span-2 xl:col-start-3"  client:visible>
+			<SectionSubtitle subtitle={aboutSubtitle} />
+			<SectionTitle  className="text-textDark" title={aboutTitle} />
+			<SectionDescription description={aboutDescription} />
+		</SectionIntro>
+		<About className="col-start-2 col-span-3 xs:col-start-3 xs:col-span-1  md:col-start-2 md:col-span-3 xl:col-span-4 xl:col-start-2"  client:visible>
+			<Image 
+				class="IMAGE" 
+				src={solarIcon} 
+				widths={[ ]} 
+				alt="A closeup of our servers" slot="solarIcon"
+			/>	
+			<Image 
+				class="IMAGE" 
+				src={settingsIcon} 
+				widths={[ ]} 
+				alt="A closeup of our servers" slot="settingsIcon"
+			/>
+			<Image 
+				class="IMAGE" 
+				src={recycleIcon} 
+				widths={[ ]} 
+				alt="A closeup of our servers" slot="recycleIcon"
+			/>
+		</About>
+		<a href="#contact" class="about-button invisible opacity-0 bg-primary text-white text-center md:hidden lg:block mx-auto -mt-4 xs:mr-0 xs:ml-auto  md:ml-auto w-[250px]  col-start-2 col-span-3 xs:col-start-3 xl:col-start-4 xs:col-span-1 py-3 pl-4 pr-4 text-base font-semibold xs:max-w-[300px] rounded-lg">Get in Touch</a>
+
+	</Section>
+	
+	<Section id="why" className="2xl:mx-auto max-w-[2000px] scroll-mt-6 sm:scroll-mt-12 lg:scroll-mt-24 grid grid-cols-[1.5rem_1rem_1fr_1rem_1.5rem] xs:grid-cols-[5%_5%_1fr_5%_5%] lg:grid-cols-[5%_5%_1fr_6rem_2fr_5%_5%] xl:grid-cols-[6%_6%_1fr_6rem_10%_2fr_6%_6%] grid-rows-[5rem_1fr_auto_5rem] lg:grid-rows-[2rem_5rem_auto_auto_7rem_2rem] xl:grid-rows-[2rem_5rem_auto_auto_7rem_2rem] items-center lg:gap-y-0">
+		<Image 
+			data-flip="false" 
+			class="IMAGE lg:object-cover   lg:-scale-x-100 hidden lg:flex lg:col-start-2 xl:col-start-3 lg:col-span-2 xl:col-span-2  lg:row-start-1  lg:row-span-6 h-full rounded-lg z-40" 
+			src={worker} 
+			widths={[ ]} 
+			alt="A closeup of our servers" slot="bgImage"
+		/>
+		<Background className="bg-secondary lg:bg-gradient-to-b lg:from-slate-200 lg:to-slate-100   h-full col-start-1 col-span-3 lg:col-span-full w-full lg:row-start-1 lg:row-span-6" />
+		<Background className="bg-primary  flex col-start-1 h-full col-span-full row-start-1 row-span-4 lg:row-start-2 lg:row-span-4" />
+
+		<SectionIntro className="xl:max-w-[750px] mx-auto xl:mx-0 col-start-3 col-span-1 sm:col-start-3 lg:col-start-5 xl:col-start-6 sm:col-span-1 lg:col-span-1 row-start-2 lg:row-start-3 lg:row-span-1 " client:visible>
+			<SectionTitle className="text-primaryDark" title={whyTitle} />
+			<SectionDescription className="text-white mt-8" description={whyDescription} />
+		</SectionIntro>
+		<a href="#contact" class="text-center text-primaryDark bg-slate-100 mx-auto mt-16 md:mt-14 xl:mt-12  xs:mr-0 xs:ml-auto lg:ml-0  w-[250px] xs:w-[300px]  col-start-2 col-span-3 xs:col-start-3 lg:col-start-5 xl:col-start-6 xs:col-span-1 row-start-3 lg:row-start-4  py-3 pl-4 pr-4  text-base font-semibold  xs:max-w-[300px] rounded-lg " >Find Out More</a>
+
+	</Section>
+
+	<Section id="faqs" className="2xl:mx-auto max-w-[2000px] relative bg-slate-100 grid grid-cols-[1.5rem_1rem_1fr_1rem_1.5rem] xs:grid-cols-[5%_5%_1fr_5%_5%]  xl:grid-cols-[6%_6%_1fr_6%_6%]  items-center  py-section-sm md:py-section-md gap-y-16 md:gap-y-20">
+		<SectionIntro className="max-w-lg col-start-2 col-span-3 xs:col-start-3 xs:col-span-1 xxs:col-start-3 xxs:col-span-1" client:visible>
+			<SectionTitle className="text-textDark" title={FAQTitle} />
+			<SectionDescription className="gap-y-0">
+				<p>If you can't find what you're looking for, you can always <a href="#contact" class="font-medium text-primary hover:text-primaryLight">send us an email</a> with your enquiry.</p>
+			</SectionDescription>
+		</SectionIntro>
+		<FAQs className="col-start-2 xxs:col-start-3 col-span-3 xxs:col-span-1 md:col-start-3 md:col-span-1" client:visible />
+		<FAQBackground className="faq-background flex items-center absolute inset-0 brightness-95 opacity-[20%]" />
+		<a href="#contact" class="md:hidden bg-slate-200 text-center text-primaryDark mx-auto -mt-4 md:mt-0 xs:mr-0 xs:ml-auto  md:ml-auto  w-[250px] xs:w-[300px] col-start-2 col-span-3 xs:col-start-3 xs:col-span-1 md:col-start-3 md:col-span-1 py-3 pl-4 pr-4 text-base font-semibold xs:max-w-[300px] rounded-lg">More Questions?</a>
+
+	</Section>
+
+	<Section id="contact" className="2xl:mx-auto max-w-[2000px] scroll-mt-6 sm:scroll-mt-12 bg-slate-200 grid grid-cols-[1.5rem_1rem_1fr_1rem_1.5rem] xs:grid-cols-[5%_5%_1fr_5%_5%] md:grid-cols-[5%_5%_1fr_5rem_1fr_5%_5%]  xl:grid-cols-[6%_6%_1fr_8rem_1fr_6%_6%]  md:grid-rows-4 items-center md:items-start py-section-sm gap-y-14 md:gap-y-0 ">
+		<SectionIntro className="max-w-paragraph col-start-2 col-span-3 xs:col-start-3 md:col-start-2 lg:col-start-2 xl:col-start-3 xs:col-span-1 md:col-span-2 lg:col-span-2 xxs:col-start-3 xxs:col-span-1 md:row-span-2 md:self-center">
+			<SectionTitle className="text-textDark" title={contactTitle} />
+			<SectionDescription description={contactDescription} />
+		</SectionIntro>
+		<ContactForm className="col-start-2 xxs:col-start-3 md:col-start-5  col-span-3  xxs:col-span-1 md:col-span-2 lg:col-start-5 lg:col-span-2 xl:col-span-1 md:row-span-4" client:visible />
+	</Section> -->
+</MainLayout>
