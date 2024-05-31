@@ -79,7 +79,7 @@ export const HeroCTA = ({className, children, dark, page='home'}: Props) => {
   return (
     <div ref={ctaRef} className={classes}>
       <p data-dark={dark} className="data-[dark=true]:text-slate-200 data-[dark=true]:lg:text-slate-500 w-full pl-1 leading-6 sm:leading-7 text-base sm:text-base  ">
-        Get notified <span className="xxs-v:hidden">of upcoming sites</span> 
+        Get notified <span className="xxs-v:hidden"></span> 
       </p> 
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">

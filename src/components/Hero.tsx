@@ -7,11 +7,10 @@ import { HeroContent } from "./HeroContent"
 import { HeroCTA } from "./HeroCTA";
 import { cn } from "../utils/utils";
 import theme from '../styles/theme'; 
-const title = "Cloud, AI and Wholesale Data Centres";
-const subtitle = "Modern, Build-to-Suit";
-const content = "Our strategically located sites offer single tenants hyper-efficient, commercially favourable alternatives to traditional wholesale colocation";
-const contentSmall = "Our sites surrounding London offer single tenants hyper-efficient, and commercially favourable alternative to wholesale colocation";
-
+const title = "This is a test";
+const subtitle = "Test";
+const content = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. In praesentium laborum autem. Quas facilis facere eum provident distinctio adipisci earum!";
+const contentSmall = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. In praesentium laborum autem. Quas facilis facere eum provident distinctio adipisci earum!";
 interface Props extends ComponentProps<"div"> {
 }
 
